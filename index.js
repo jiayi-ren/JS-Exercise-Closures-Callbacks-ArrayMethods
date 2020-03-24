@@ -132,8 +132,8 @@ function processProduct(num1, num2, callback) {
  * [2] Invoking `processDuplicateFree` passing `[1,1,2,2,3]` and `(arr) => arr.length`,
  * should return 3.
 */
-function processDuplicateFree(/* CODE HERE ONLY AFTER COMPLETING ALL OTHER TASKS */) {
-  /* CODE HERE ONLY AFTER COMPLETING ALL OTHER TASKS */
+function processDuplicateFree(list, callback) {
+  return callback(list.filter((element, index) => list.indexOf(element) === index));
 }
 
 /////////////// HIGHER-ORDER ARRAY METHODS ///////////////
@@ -285,8 +285,8 @@ function getRunnersByTShirtSize(runners, tShirtSize) {
  * @param runners array of runners like the one inside the /data/runners.js file.
  * @returns a number which is the sum of the donations by all runners.
 */
-function tallyUpDonations(/* CODE HERE */) {
-  /* CODE HERE */
+function tallyUpDonations(runners) {
+  return runners.reduce((sum, element) =>  sum + element.donation , 0);
 }
 
 /////////////// CLOSURES ///////////////
@@ -299,10 +299,16 @@ function tallyUpDonations(/* CODE HERE */) {
  * Study the code for counter1 and counter2. Answer the questions below.
  * 
  * 1. What is the difference between counter1 and counter2?
+ *    
+ *    counter1 has one function inside another function. counter2 doesn't.
  * 
  * 2. Which of the two uses a closure? How can you tell?
  * 
+ *    counter1 uses a closure since it has a function bundled inside.
+ * 
  * 3. In what scenario would the counter1 code be preferable? In what scenario would counter2 be better? 
+ * 
+ *    counter1 is preferable if we want to reset the counter every time before counting. counter2 is for continuous counting without reset.
  *
 */
 
@@ -344,8 +350,11 @@ function counter2() {
  * counter() // should return 0
  * etc
 */
-function counterMakerWithLimit(/* CODE HERE */) {
-  /* CODE HERE */
+function counterMakerWithLimit(limit) {
+  let count = -1;
+  return function(){
+    return count < limit? ++count: count = 0;
+  }
 }
 
 /////////////// END OF CHALLENGE ///////////////
