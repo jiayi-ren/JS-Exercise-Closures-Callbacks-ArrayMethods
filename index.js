@@ -351,9 +351,14 @@ function counter2() {
  * etc
 */
 function counterMakerWithLimit(limit) {
-  let count = -1;
+  let count = 0;
   return function(){
-    return count < limit? ++count: count = 0;
+    if (count <= limit){
+      return count++;
+    }else{
+      count = 0;
+      return count++;
+    }
   }
 }
 
